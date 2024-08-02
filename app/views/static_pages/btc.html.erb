@@ -1,0 +1,80 @@
+<div class="container">
+	<div class=container>
+		<h1>BTC/USDT</h1>
+		<h2>Actual price: <%= @price %></h2>
+	</div>
+	<div class="container">
+		<div class="row">
+			<!-- TradingView Widget BEGIN -->
+			<div class="tradingview-widget-container">
+			  <div id="tradingview_b8b90"></div>
+			  <div class="tradingview-widget-copyright"><a href="https://es.tradingview.com/symbols/BTCUSDT/?exchange=BINANCE" rel="noopener" target="_blank"><span class="blue-text">BTCUSDT Gráfico</span></a> por TradingView</div>
+			  <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+			  <script type="text/javascript">
+			  new TradingView.widget(
+			  {
+			  "height": 610,
+			  "symbol": "BINANCE:BTCUSDT",
+			  "interval": "1",
+			  "timezone": "Etc/UTC",
+			  "theme": "light",
+			  "style": "1",
+			  "locale": "es",
+			  "toolbar_bg": "#f1f3f6",
+			  "enable_publishing": false,
+			  "allow_symbol_change": true,
+			  "hide_side_toolbar": false,
+			  "container_id": "tradingview_b8b90",
+			  "hline": 60000
+			}
+			  );
+			  </script>
+			</div>
+			<!-- TradingView Widget END -->
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+		<div class="col-6">
+			<table class="table">
+			  <thead>
+			    <tr>
+			      <th scope="col">#</th>
+			      <th style="text-align: right" scope="col">BID Price</th>
+			      <th style="text-align: right" scope="col">Amount</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			  	<% @bid.each_with_index do |(bid, amount), index| %>
+				    <tr <%='style=background:rgba(72,207,57,0.4);' if amount > 50 %>>
+				      <th scope="row"><%= index %></th>
+				      <td style="text-align: right"><%= bid %></td>
+				      <td style="text-align: right"><%= amount %></td>
+				    </tr>
+			   	<% end -%>
+			  </tbody>
+			</table>
+		</div>
+		<div class="col-6">
+			<table class="table">
+			  <thead>
+			    <tr>
+			      <th scope="col">#</th>
+			      <th style="text-align: right" scope="col">ASK Price</th>
+			      <th style="text-align: right" scope="col">Amount</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			  	<% @ask.each_with_index do |(ask, amount), index| %>
+				    <tr <%='style= background:rgb(252,199,199);' if amount > 50 %>>
+				      <th scope="row"><%= index %></th>
+				      <td style="text-align: right"><%= ask %></td>
+				      <td style="text-align: right"><%= amount %></td>
+				    </tr>
+			   	<% end -%>
+			  </tbody>
+			</table>
+		</div>
+	</div>
+	</div>
+</div>
